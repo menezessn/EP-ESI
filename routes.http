@@ -1,0 +1,25 @@
+GET  http://localhost:3333/documents
+
+###
+
+GET  http://localhost:3333/documents?search=nome
+
+###
+
+POST  http://localhost:3333/documents
+Content-Type: application/json
+
+{
+    "nome": "Trancamento de matrícula dois"
+}
+
+###
+PUT  http://localhost:3333/documents/4
+Content-Type: application/json
+
+{
+    "nome": "editado segundo"
+}
+
+###
+DELETE  http://localhost:3333/documents/3
