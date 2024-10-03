@@ -23,3 +23,26 @@ Content-Type: application/json
 
 ###
 DELETE  http://localhost:3333/documents/3
+
+###
+
+POST  http://localhost:3333/auth/register
+Content-Type: application/json
+
+{
+    "name": "Kathleen Curry",
+    "cpf": "23959193972",
+    "email": "steven04@gmail.com",
+    "password": "J&K8r1Tx",
+    "user_type": "user"
+}
+
+###
+
+POST  http://localhost:3333/auth/login
+Content-Type: application/json
+
+{
+    "cpf": "23959193972",
+    "password": "J&K8r1Tx"
+}
