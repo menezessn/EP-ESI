@@ -1,4 +1,5 @@
 import {fastify} from "fastify"
+import cors from '@fastify/cors';
 import { AuthController } from "./auth/AuthController.js"
 import { UserDatabase } from "./auth/UserDatabase.js"
 import AuthService from "./auth/AuthService.js"
@@ -25,7 +26,12 @@ const authenticatedRouteOptions = {
     }
 }
 
+//configure cors
 const app = fastify()
+app.register(cors, {
+    origin: 'http://localhost:5173', // Permitir apenas esse domínio
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
+});
 
 // ----- Authentication -------------
 
