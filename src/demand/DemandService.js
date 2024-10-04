@@ -13,4 +13,15 @@ export class DemandService {
         return newDemand
     }
 
+    async list(user_id){
+        const demandsList = await this.db.list(user_id)
+        return demandsList
+    }
+
+    async update(user_id, demand){
+        const demandUpdated = await this.db.update(user_id, demand)
+        return demandUpdated
+    }
+
+
 }

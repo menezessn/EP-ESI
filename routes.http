@@ -1,31 +1,3 @@
-GET  http://localhost:3333/documents
-
-###
-
-GET  http://localhost:3333/documents?search=nome
-
-###
-
-POST  http://localhost:3333/documents
-Content-Type: application/json
-
-{
-    "nome": "Trancamento de matrícula dois"
-}
-
-###
-PUT  http://localhost:3333/documents/4
-Content-Type: application/json
-
-{
-    "nome": "editado segundo"
-}
-
-###
-DELETE  http://localhost:3333/documents/3
-
-###
-
 POST  http://localhost:3333/auth/register
 Content-Type: application/json
 
@@ -44,8 +16,8 @@ POST  http://localhost:3333/auth/login
 Content-Type: application/json
 
 {
-    "cpf": "23959193972",
-    "password": "J&K8r1Tx"
+    "cpf": "12345678910",
+    "password": "senha1234"
 }
 
 ###
@@ -58,4 +30,24 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiY3BmIjoiM
     "file_paths": "/raiz/2024_10_03",
     "status": "enviada"
 }
+
+###
+
+GET  http://localhost:3333/demands
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiY3BmIjoiMTIzNDU2Nzg5MTAiLCJpYXQiOjE3MjgwMDYwMjksImV4cCI6MTcyODA5MjQyOX0.WXVUQWdyYRdCQ07fKB1yvwneNATNQXwt5RDSNM7uQ4A
+
+###
+PUT  http://localhost:3333/update/demand
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiY3BmIjoiMTIzNDU2Nzg5MTAiLCJpYXQiOjE3MjgwMDYwMjksImV4cCI6MTcyODA5MjQyOX0.WXVUQWdyYRdCQ07fKB1yvwneNATNQXwt5RDSNM7uQ4A
+
+{
+    "id": 1,
+    "responsible_opinion": null,
+    "file_paths": "/raiz/2024_10_03",
+    "status": "cancelada",
+    "aplicant": null
+}
+
 

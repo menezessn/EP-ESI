@@ -46,6 +46,16 @@ app.post("/create/demand", authenticatedRouteOptions,async(request, reply) => {
     reply.code(code).send(body)
 })
 
+app.get("/demands", authenticatedRouteOptions,async(request, reply) => {
+    const {code, body} = await demandController.list(request)
+    reply.code(code).send(body)
+})
+
+app.put("/update/demand", authenticatedRouteOptions,async(request, reply) => {
+    const {code, body} = await demandController.update(request)
+    reply.code(code).send(body)
+})
+
 app.listen({
     port: 3333
 })

@@ -49,4 +49,12 @@ export class UserDatabase {
             WHERE cpf = ${CPF};`;
         return result[0]; // Returns the found user or undefined
     }
+
+     // Obtains a user by CPF
+    async getByID(id) {
+        const result = await sql`
+            SELECT * FROM users 
+            WHERE id = ${id};`;
+        return result[0]; // Returns the found user or undefined
+    }
 }
