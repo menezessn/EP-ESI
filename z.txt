@@ -1,0 +1,12 @@
+{
+    "cpf": "23959193972",
+    "password": "J&K8r1Tx"
+}
+
+{
+    "name": "Lucas Almeida",
+    "cpf": "12345678910",
+    "email": "lucas.almeida@example.com",
+    "password": "senha1234",
+    "user_type": "admin"
+}

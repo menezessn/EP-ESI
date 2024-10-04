@@ -30,12 +30,13 @@ POST  http://localhost:3333/auth/register
 Content-Type: application/json
 
 {
-    "name": "Kathleen Curry",
-    "cpf": "23959193972",
-    "email": "steven04@gmail.com",
-    "password": "J&K8r1Tx",
-    "user_type": "user"
+    "name": "Lucas Almeida",
+    "cpf": "12345678910",
+    "email": "lucas.almeida@example.com",
+    "password": "senha1234",
+    "user_type": "admin"
 }
+
 
 ###
 
@@ -46,3 +47,15 @@ Content-Type: application/json
     "cpf": "23959193972",
     "password": "J&K8r1Tx"
 }
+
+###
+
+POST  http://localhost:3333/create/demand
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiY3BmIjoiMjM5NTkxOTM5NzIiLCJpYXQiOjE3MjgwMDEwNTIsImV4cCI6MTcyODA4NzQ1Mn0.kX54v4-1B5Vj3sn1zybkNXTV0FIaFVc16X57lN1uR44
+
+{
+    "file_paths": "/raiz/2024_10_03",
+    "status": "enviada"
+}
+

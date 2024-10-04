@@ -76,6 +76,12 @@ class AuthService {
         return {token:token}
 
     }
+
+    async verifyToken(token){
+        const decodedToken = jwt.verify(token, process.env.JWT_KEY)
+        const user = await this.db.getByCPF(decodedToken.cpf)
+        return user;
+    }
 }
 
 export default AuthService; 
