@@ -72,7 +72,7 @@ class AuthService {
             throw new Error("Invalid password");
         }
         
-        const token = jwt.sign({id: user.id, cpf: user.cpf}, process.env.JWT_KEY, {expiresIn: "1d"})
+        const token = jwt.sign({id: user.id, cpf: user.cpf, userType: user.user_type, name:user.name, email: user.email}, process.env.JWT_KEY, {expiresIn: "1d"})
         return {token:token}
 
     }
