@@ -16,8 +16,8 @@ POST  http://localhost:3333/auth/login
 Content-Type: application/json
 
 {
-    "cpf": "12345678910",
-    "password": "senha1234"
+    "cpf": "49312312312",
+    "password": "123456"
 }
 
 ###
@@ -50,4 +50,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiY3BmIjoiM
     "aplicant": null
 }
 
+###
+
+POST http://localhost:3333/upload
+
+###
+GET http://localhost:3333/download?file_paths=1_20241005_202837
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiY3BmIjoiNDkzMTIzMTIzMTIiLCJ1c2VyVHlwZSI6ImNvb3JkZW5hZG9yIiwibmFtZSI6Ik1hcmNlbG8gTWVuZXplcyAiLCJlbWFpbCI6Im1hcmNlbG9tZW5lemVzNTc1QGdtYWlsLmNvbSIsImlhdCI6MTcyODI2MzA4NSwiZXhwIjoxNzI4MzQ5NDg1fQ.EgeD1O3HO_3vZZ_BDFEmKm8qTC_6WVewVAd7Caax6G4
 

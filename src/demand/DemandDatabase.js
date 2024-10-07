@@ -49,6 +49,7 @@ export class DemandDatabase {
         const id = demand.id
         const status = demand.status
         const responsible_opinion = demand.responsible_opinion
+        const reviewer = demand.reviewer
         let updatedDemand
 
         if (!status && !responsible_opinion) {
@@ -57,9 +58,9 @@ export class DemandDatabase {
     
         // Atualiza os campos permitidos com base no tipo de usuário
         if (user_type === "secretaria" || user_type === "membro_comissao")
-            updatedDemand = await sql`UPDATE Demand SET status = ${status} WHERE id = ${id} RETURNING *;`
+            updatedDemand = await sql`UPDATE Demand SET status = ${status}, reviewer = ${reviewer} WHERE id = ${id} RETURNING *;`
     
-        if (user_type === "coordenador") updatedDemand = await sql`UPDATE Demand SET status = ${status}, responsible_opinion = ${responsible_opinion} WHERE id = ${id} RETURNING *;`
+        if (user_type === "coordenador") updatedDemand = await sql`UPDATE Demand SET status = ${status}, responsible_opinion = ${responsible_opinion}, reviewer = ${reviewer} WHERE id = ${id} RETURNING *;`
     
         // Se não houver campos para atualizar, lança um erro
         

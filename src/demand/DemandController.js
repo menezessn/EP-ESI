@@ -4,10 +4,10 @@ export class DemandController {
     }
 
     async create (request){
-        const {file_paths, status} = request.body
+        const {file_paths, status, aplicant} = request.body
         const user = request.user
         try{
-            const demand = await this.service.create(file_paths, status, user.id)
+            const demand = await this.service.create(file_paths, status, aplicant)
             return {code:201, body: demand}
         }catch(error){
             return {code: 400, body: {message: error.message}}
