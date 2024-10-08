@@ -21,8 +21,9 @@ export class UserDatabase {
 
      // Update an existing user
     async update(user) {
-        const result = await sql`
-            UPDATE user 
+        if(user.password){
+            const result = await sql`
+            UPDATE users 
             SET name = ${user.name}, 
                 cpf = ${user.cpf}, 
                 email = ${user.email}, 
@@ -30,7 +31,21 @@ export class UserDatabase {
                 user_type = ${user.user_type} 
             WHERE id = ${user.id} 
             RETURNING *;`;
-        return result[0]; // Return the updated user
+            return result[0]; // Return the updated user
+        }
+        console.log(user.password)
+        const result = await sql`
+            UPDATE users 
+            SET name = ${user.name}, 
+                cpf = ${user.cpf}, 
+                email = ${user.email},  
+                user_type = ${user.user_type} 
+            WHERE id = ${user.id} 
+            RETURNING *;`;
+            console.log(result[0])
+            return result[0]; // Return the updated user
+
+        
     }
 
     // Delete a user

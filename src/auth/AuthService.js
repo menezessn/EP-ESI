@@ -82,6 +82,17 @@ class AuthService {
         const user = await this.db.getByCPF(decodedToken.cpf)
         return user;
     }
+
+    async update(cpf, email, password, name, user_type, id){
+        const user = new User(cpf, email, password, name, user_type, id)
+        if(user.password){
+            user.password = bcrypt.hashSync(user.password, 10)
+            console.log(user.password)
+        }
+        const userUpdated = await this.db.update(user)
+        return userUpdated
+    }
+
 }
 
 export default AuthService; 

@@ -8,24 +8,24 @@ export class DemandDatabase {
     }
 
     // List Demands for the user type
-    async list(user_id) {
+    async list(user_email) {
         let demands;
         const result = await sql`
             SELECT user_type FROM users 
-            WHERE id = ${user_id};`;
+            WHERE email = ${user_email};`;
         const user_type = result[0].user_type;
 
-        if (user_type === "secretaria" || user_type === "coordenador" || user_type === "membro_comissao") {
+        if (user_type === "secretaria" || user_type === "coordenador" || user_type === "membro_comissao" ) {
             demands = await sql`SELECT * FROM Demand`;
         } else if (user_type === "aluno") {
             demands = await sql`
-                SELECT * FROM Demand
-                WHERE aplicant = ${user_id}`;
+            SELECT * FROM Demand
+            WHERE aplicant = ${user_email}`;
         } else if (user_type === "funcionario") {
             demands = await sql`
                 SELECT * FROM Demand
-                WHERE aplicant = ${user_id} 
-                OR responsible_opinion = ${user_id}`;
+                WHERE aplicant = ${user_email} 
+                OR responsible_opinion = ${user_email}`;
         } else {
             throw new Error("unknown user type");
         }
@@ -41,7 +41,7 @@ export class DemandDatabase {
         const user_type = result[0].user_type;
     
         // Verifica se o usuário tem permissão para atualizar
-        if (user_type !== "secretaria" && user_type !== "coordenador" && user_type !== "membro_comissao") {
+        if (user_type !== "secretaria" && user_type !== "funcionario" && user_type !== "coordenador" && user_type !== "membro_comissao") {
             throw new Error("Unauthorized: user does not have permission to update demands");
         }
     
@@ -56,6 +56,9 @@ export class DemandDatabase {
             throw new Error("No valid fields to update");
         }
     
+        // Atualiza os campos permitidos com base no tipo de usuário
+        if (user_type === "funcionario")
+            updatedDemand = await sql`UPDATE Demand SET status = ${status} WHERE id = ${id} RETURNING *;`
         // Atualiza os campos permitidos com base no tipo de usuário
         if (user_type === "secretaria" || user_type === "membro_comissao")
             updatedDemand = await sql`UPDATE Demand SET status = ${status}, reviewer = ${reviewer} WHERE id = ${id} RETURNING *;`

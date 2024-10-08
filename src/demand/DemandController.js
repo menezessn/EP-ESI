@@ -17,7 +17,7 @@ export class DemandController {
     async list(request){
         const user = request.user
         try {
-            const demandsList = await this.service.list(user.id)
+            const demandsList = await this.service.list(user.email)
             return {code: 200, body: demandsList}
         } catch (error) {
             return {code: 400, body: {message: error.message}}

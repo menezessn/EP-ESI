@@ -28,4 +28,14 @@ export class AuthController {
 
     }
 
+    async update(request){
+        const {cpf, email, password, name, user_type, id} = request.body
+        try{
+            const body = await this.service.update(cpf, email, password, name, user_type, id);
+            return{code: 200, body: body}
+        }catch(error){
+            return {code: 400, body: {message: error.message}}
+        }
+    }
+
 }

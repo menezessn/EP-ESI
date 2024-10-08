@@ -13,8 +13,8 @@ export class DemandService {
         return newDemand
     }
 
-    async list(user_id){
-        const demandsList = await this.db.list(user_id)
+    async list(user_email){
+        const demandsList = await this.db.list(user_email)
         return demandsList
     }
 
