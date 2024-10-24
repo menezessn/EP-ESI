@@ -25,7 +25,9 @@ export class DemandDatabase {
             demands = await sql`
                 SELECT * FROM Demand
                 WHERE aplicant = ${user_email} 
-                OR responsible_opinion = ${user_email}`;
+                OR responsible_opinion = ${user_email}
+                OR reviewer = ${user_email}`
+                ;
         } else {
             throw new Error("unknown user type");
         }

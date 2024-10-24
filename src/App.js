@@ -62,7 +62,8 @@ app.register(multipart, {
 
 // ----- Authentication -------------
 
-app.post("/auth/register", async(request, reply) => {
+app.post("/auth/register", authenticatedRouteOptions, async(request, reply) => {
+    if (user.user_type === "aluno")  reply.code(404).send({message: "Unathorized: invalid token"})
     const {code, body} = await authController.register(request)
     reply.code(code).send(body)
 })
